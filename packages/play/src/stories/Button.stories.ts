@@ -88,4 +88,27 @@ export const Default: Story & { args: { content: string } } = {
   },
 };
 
+export const Circle: Story = {
+    args: {
+      icon: "search",
+    },
+    render: (args) => ({
+      components: { ErButton },
+      setup() {
+        return { args };
+      },
+      template: container(`
+        <er-button circle v-bind="args"/>
+      `),
+    }),
+    play: async ({ canvasElement, args, step }) => {
+      const canvas = within(canvasElement);
+      await step("click button", async () => {
+        await userEvent.click(canvas.getByRole("button"));
+      });
+  
+      expect(args.onClick).toHaveBeenCalled();
+    },
+  };
+
 export default meta;
