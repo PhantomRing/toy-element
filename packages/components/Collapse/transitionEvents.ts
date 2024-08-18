@@ -1,3 +1,4 @@
+// 动画动效
 const _setHeightZero = (el: HTMLElement) => (el.style.height = "0px");
 const _setHeightScroll = (el: HTMLElement) =>
   (el.style.height = `${el.scrollHeight}px`);

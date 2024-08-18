@@ -2,7 +2,7 @@
 import { ref, provide, watch } from "vue";
 import { each } from "lodash-es";
 import type { CollapseItemName, CollapseProps, CollapseEmits } from "./types";
-// import { debugWarn } from "@eric-ui/utils";
+import { debugWarn } from "@toy-element/utils";
 import { COLLAPSE_CTX_KEY } from "./constants";
 
 const COMPONENT_NAME = "ErCollapse" as const;
@@ -16,7 +16,7 @@ const emits = defineEmits<CollapseEmits>();
 const activeNames = ref<CollapseItemName[]>(props.modelValue);
 
 if (props.accordion && activeNames.value.length > 1) {
-  console.warn("accordion mode should only have one active item");
+  debugWarn(COMPONENT_NAME, "accordion mode should only have one active item");
 }
 
 function handleItemClick(item: CollapseItemName) {
